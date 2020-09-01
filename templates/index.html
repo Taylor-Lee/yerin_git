@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
               integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
               crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -71,12 +70,17 @@
                 align-items: center;
                 position: relative;
                 flex-wrap: wrap;
-                /*flex-direction: column;*/
+                flex-direction: column;
                 border-radius: 10px;
+                margin: 15px auto;
             }
 
             .chocBtns img {
                 width: 100px;
+            }
+
+            .chocBtns button {
+                margin: 5px;
             }
 
             .container {
@@ -101,6 +105,10 @@
                 background: #f00;
                 transition: 0.7s;
                 z-index: 1;
+            }
+
+            .container.chocolate {
+                z-index: 10;
             }
 
             .container .card:nth-child(1) .icon {
@@ -230,6 +238,10 @@
                 width: 30px;
             }
 
+            .modal-content button {
+                height: 100px;
+            }
+
         </style>
         <script type="text/javascript">
 
@@ -242,34 +254,56 @@
                 $('#myModal').hide();
             };
 
+          function showContent() {
+            // 1. 서버로부터 content 를 받아옴
+            $.ajax({
+              type: "GET",
+              url: "/content",
+              data: {},
+              success: function (response) {
+                // 2. Ajax 요청이 성공하면 호출되는 부분
+                let content1 = response['content'];
+                let content2 = response.content;
+
+                console.log(content1, content2)
+              }
+            });
+          }
+
         </script>
     </head>
     <body>
-        <div class="container">
+        <div class="container chocolate">
             <!-- The Modal -->
             <div id="myModal" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <p style="text-align: center;" class="chocBtns">
-                        <button type="button">
-                            <img src="{{url_for('static', filename='chocolate_1.png')}}">
-                        </button>
-                        <button type="button">
-                            <img src="{{url_for('static', filename='chocolate_2.png')}}">
-                        </button>
-                        <button type="button">
-                            <img src="{{url_for('static', filename='chocolate_3.png')}}">
-                        </button>
-                        <button type="button">
-                            <img src="{{url_for('static', filename='chocolate_4.png')}}">
-                        </button>
-                        <button type="button">
-                            <img src="{{url_for('static', filename='chocolate_5.png')}}">
-                        </button>
-                        <button type="button">
-                            <img src="{{url_for('static', filename='chocolate_6.png')}}">
-                        </button>
-                    </p>
+                    <div style="text-align: center;" class="chocBtns">
+                        <div class="">
+                            <button type="button" class="rounded float-left" onclick="showContent()">
+                                <img src="{{ url_for('static', filename='chocolate_1.png') }}">
+                            </button>
+                            <button type="button" class="rounded float-right" onclick="showContent()">
+                                <img src="{{ url_for('static', filename='chocolate_2.png') }}">
+                            </button>
+                        </div>
+                        <div class="">
+                            <button type="button" class="rounded float-left" onclick="showContent()">
+                                <img src="{{ url_for('static', filename='chocolate_3.png') }}">
+                            </button>
+                            <button type="button" class="rounded float-right" onclick="showContent()">
+                                <img src="{{ url_for('static', filename='chocolate_4.png') }}">
+                            </button>
+                        </div>
+                        <div class="">
+                            <button type="button" class="rounded float-left" onclick="showContent()">
+                                <img src="{{ url_for('static', filename='chocolate_5.png') }}">
+                            </button>
+                            <button type="button" class="rounded float-right" onclick="showContent()">
+                                <img src="{{ url_for('static', filename='chocolate_6.png') }}">
+                            </button>
+                        </div>
+                    </div>
                     <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;"
                          onClick="close_pop();">
                         <span class="pop_bt" style="font-size: 13pt;">닫기</span>
