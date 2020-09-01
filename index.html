@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+
+        <title>Hello Desktop!</title>
+
+        <style type="text/css">
+            * {
+                font-family: a옛날목욕탕B;
+            }
+
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                /*overflow: auto; !* Enable scroll if needed *!*/
+                background-color: rgb(0, 0, 0); /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+            }
+
+            /* Modal Content/Box */
+            .modal-content {
+                background-color: #fefefe;
+                margin: 7% auto; /* 15% from the top and centered */
+                padding: 7px;
+                border: 1px solid #888;
+                width: 30%; /* Could be more or less, depending on screen size */
+            }
+
+            .titleDesign {
+                text-align: center;
+                border-radius: 10px;
+                display: flex;
+                padding-left: 36%;
+                padding-top: 1%;
+
+            }
+
+            .cardDesign {
+                margin: 0;
+                padding: 0;
+                padding-block-end: 5%;
+                min-height: 100vh;
+                background: #333;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /*background-color: #f1f1f1;*/
+                background-color: white;
+            }
+
+            .chocBtns {
+                width: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                flex-wrap: wrap;
+                /*flex-direction: column;*/
+                border-radius: 10px;
+            }
+
+            .chocBtns img {
+                width: 100px;
+            }
+
+            .container {
+                width: auto;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .container .card {
+                position: relative;
+                border-radius: 10px;
+                border-color: transparent;
+            }
+
+            .container .card .icon {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #f00;
+                transition: 0.7s;
+                z-index: 1;
+            }
+
+            .container .card:nth-child(1) .icon {
+                background: #e07768;
+            }
+
+            .container .card:nth-child(2) .icon {
+                background: #6eadd4;
+            }
+
+            .container .card:nth-child(3) .icon {
+                background: #4aada9;
+            }
+
+            .container .card .icon .fa {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 80px;
+                transition: 0.7s;
+                color: #fff;
+            }
+
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 80px;
+                transition: 0.7s;
+                color: #fff;
+            }
+
+            .container .card .face {
+                width: 300px;
+                height: 200px;
+                transition: 0.5s;
+            }
+
+            .container .card .face.face1 {
+                position: relative;
+                background: #333;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+                transform: translateY(100px);
+            }
+
+            .container .card:hover .face.face1 {
+                background: #ff0057;
+                transform: translateY(0px);
+            }
+
+            .container .card .face.face1 .content {
+                opacity: 1;
+                transition: 0.5s;
+            }
+
+            .container .card:hover .face.face1 .content {
+                opacity: 1;
+            }
+
+            .container .card .face.face1 .content i {
+                max-width: 100px;
+            }
+
+            .container .card .face.face2 {
+                position: relative;
+                background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+                box-sizing: border-box;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+                transform: translateY(-100px);
+            }
+
+            .container .card:hover .face.face2 {
+                transform: translateY(0);
+            }
+
+            .container .card .face.face2 .content p {
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                color: #414141;
+            }
+
+            .container .card .face.face2 .content h3 {
+                margin: 0 0 10px 0;
+                padding: 0;
+                color: #fff;
+                font-size: 24px;
+                text-align: center;
+                color: #414141;
+            }
+
+            .container a {
+                text-decoration: none;
+                color: #414141;
+            }
+
+            .NaverSearch {
+                margin: 0;
+                padding: 0;
+                padding-left: 11px;
+                padding-bottom: 30px;
+                background: white;
+            }
+
+            .NaverSearch img {
+                width: 30px;
+            }
+
+            .GoogleSearch {
+                margin: 0;
+                padding: 0;
+                padding-left: 11px;
+                padding-bottom: 30px;
+                background: white;
+            }
+
+            .GoogleSearch img {
+                width: 30px;
+            }
+
+        </style>
+        <script type="text/javascript">
+
+            jQuery(document).ready(function () {
+                $('#myModal').show();
+            });
+
+            //팝업 Close 기능
+            function close_pop(flag) {
+                $('#myModal').hide();
+            };
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <p style="text-align: center;" class="chocBtns">
+                        <button type="button">
+                            <img src="{{url_for('static', filename='chocolate_1.png')}}">
+                        </button>
+                        <button type="button">
+                            <img src="{{url_for('static', filename='chocolate_2.png')}}">
+                        </button>
+                        <button type="button">
+                            <img src="{{url_for('static', filename='chocolate_3.png')}}">
+                        </button>
+                        <button type="button">
+                            <img src="{{url_for('static', filename='chocolate_4.png')}}">
+                        </button>
+                        <button type="button">
+                            <img src="{{url_for('static', filename='chocolate_5.png')}}">
+                        </button>
+                        <button type="button">
+                            <img src="{{url_for('static', filename='chocolate_6.png')}}">
+                        </button>
+                    </p>
+                    <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;"
+                         onClick="close_pop();">
+                        <span class="pop_bt" style="font-size: 13pt;">닫기</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Modal-->
+        <div class="titleDesign">
+            <h1>Hello Desktop!</h1>
+        </div>
+        <div class="cardDesign">
+            <div class="container">
+                <!--            날씨 카드-->
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <div class="icon">
+                                <i class="fa fa-thermometer" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <h3>
+                                <a href="https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%EB%82%A0%EC%94%A8"
+                                   target="_blank">
+                                    네이버 날씨 바로가기
+                                </a>
+                            </h3>
+                            <p>Please check the weather through Naver.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--            코로나 카드-->
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <div class="icon">
+                                <i class="fa fa-ambulance" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <h3>
+                                <a href="https://search.naver.com/search.naver?where=nexearch&query=%EC%BD%94%EB%A1%9C%EB%82%98+%EC%9D%BC%EC%9D%BC+%ED%99%95%EC%A7%84%EC%9E%90&ie=utf8&sm=tab_she&qdt=0"
+                                   target="_blank">
+                                    코로나 현황 바로가기
+                                </a>
+                            </h3>
+                            <p>Please check the COVID-19 through Naver.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--            달력 카드-->
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <div class="icon">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <h3>
+                                <a href="https://github.com/atom888" target="_blank">
+                                    Calander
+                                </a>
+                            </h3>
+                            <p>What's the date today??</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--            네이버 검색창-->
+        <div class="NaverSearch">
+            <img src="{{url_for('static', filename='naver.jpg')}}">
+            <input type="search">
+            <a target="_blank"
+               href="https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%ED%95%98%EA%B8%B0%EC%8B%AB%EC%96%B4"
+               title="Naver Search">
+                <img src="{{url_for('static', filename='search.png')}}"></a>
+        </div>
+        <!--            구글 검색창-->
+        <div class="GoogleSearch">
+            <img src="{{url_for('static', filename='google.jpg')}}">
+            <input type="search">
+            <a target="_blank" href="https://www.google.com/" title="Google Search">
+                <img src="{{url_for('static', filename='search.png')}}"></a>
+        </div>
+    </body>
+</html>
